@@ -8,57 +8,47 @@
     <title>Cat Game</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
 </head>
 
-<body class="container m-4">
+<body class="m-4">
 
-    <h2 class="text-center">Cat Game</h2>
+    <h2 class="text-center fw-bold">Tic Tac Toe</h2>
 
-   <div class="content-game">
-    
-    <div class="d-flex">
-
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="0">
-            X
+    <div class="content-game d-flex flex-column align-items-center" >
+        <div class="d-flex"> 
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="0">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="1">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="2">
+            </div>
         </div>
 
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="1">
-            X
+        <div class="d-flex flex-row">
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="3">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="4">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="5">
+            </div>
         </div>
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="2">
-            X
+
+        <div class="d-flex flex-row">
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="6">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="7">
+            </div>
+            <div class="card m-2 d-flex text-center justify-content-center bg-primary border border-5" style="width: 150px; height: 150px; font-size: 80px;" id="8">
+            </div>
         </div>
     </div>
-
-    <div class="d-flex flex-row">
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="3">
-            X
-        </div>
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="4">
-            X
-        </div>
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="5">
-            X
-        </div>
-    </div>
-
-    <div class="d-flex flex-row">
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="6">
-            X
-        </div>
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="7">
-            X
-        </div>
-        <div class="card m-2 d-flex text-center justify-content-center" style="width: 150px; height: 150px;" id="8">
-            X
-        </div>
-    </div>
-   </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" type="text/javascript"></script>
     <script src="index.js"></script>
 
 </body>
