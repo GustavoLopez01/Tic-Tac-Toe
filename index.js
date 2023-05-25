@@ -1,41 +1,54 @@
 const contentGame = document.querySelector(".content-game");
 let player = "X";
 let gameArr = ["", "", "", "", "", "", "", ""];
-let flag = true;
+let flag = "player";
 let posComputer = -1;
 
 // Functions
 
 const getPosition = (e) => {
-  let a = e.target.classList.contains("border-5");
+  let existeClase = e.target.classList.contains("border-5");
 
-  if (a) {
-    if (flag) {
+  const tableroLleno = gameArr.filter((elemento) => elemento !== "");
+
+  if (existeClase) {
+    if (flag === "player") {
       gameArr[e.target.id] = player;
       paintPlayerHTML(e, player);
       if (validateFields()) return;
-      flag = false;
+      flag = "computer";
       player = "O";
     }
-    // Espera un segundo antes de que tire la maquina
-    setTimeout(() => {
-      turnComputer();
-    }, 1000);
+
+    // Verifico la longitud de mi arreglo si ya esta lleno pero sigue entrando a la condicion anterior significa que fue empate
+    if (tableroLleno.length < 8) {
+      // Espera un segundo antes de que tire la maquina
+      setTimeout(() => {
+        turnComputer(e);
+      }, 1000);
+    } else {
+      player = "";
+      showAlertWinner();
+      return;
+    }
   }
 };
 
 // Turno de tirar a la computadora
-function turnComputer() {
+function turnComputer(e) {
   // Realiza un ciclo por si la posicion que cae ya esta ocupada por el jugador
   while (posComputer === -1) {
     posComputer = generateNumberComputer();
     if (posComputer !== -1) {
       gameArr[posComputer] = player;
-      console.log("poswhile", posComputer);
-      const divCat = document.getElementById(JSON.stringify(posComputer));
-      divCat.textContent = player;
-      if (validateFields()) return;
-      flag = true;
+      const div = document.getElementById(JSON.stringify(posComputer));
+      div.classList.add("selected");
+      div.disabled = true;
+      div.textContent = player;
+      if (validateFields()) {
+        return;
+      }
+      flag = "player";
       player = "X";
       posComputer = -1;
       break;
@@ -48,12 +61,13 @@ const paintPlayerHTML = (e, playerOrComputer) => {
   if (!e.target.classList.contains("selected")) {
     e.target.textContent = playerOrComputer;
     e.target.classList.add("selected");
+    e.target.disabled = true;
   }
 };
 
 const validateFields = () => {
   switch (flag) {
-    case true:
+    case "player":
       if (
         gameArr[0] === player &&
         gameArr[1] === player &&
@@ -93,7 +107,7 @@ const validateFields = () => {
 
       break;
 
-    case false:
+    case "computer":
       if (
         gameArr[0] === player &&
         gameArr[1] === player &&
@@ -138,19 +152,25 @@ const validateFields = () => {
 };
 
 const showAlertWinner = () => {
-  contentGame.style.pointerEvents = 'none';
+  contentGame.style.pointerEvents = "none";
   contentGame.style.opacity = 0.4;
   if (player === "X") {
     iziToast.show({
       title: "Felicidades",
-      message: "le ganaste a la maquina.",
+      message: "Tienes mas habilidad que una maquina.",
       color: "blue",
     });
-  } else {
+  } else if (player === "O") {
     iziToast.show({
       title: "Lastima :(",
       message: "La maquina te gano suerte para la proxima.",
       color: "red",
+    });
+  } else {
+    iziToast.show({
+      title: "Empate.!",
+      message: "Ninguno fue el ganador pero vuelve a intentarlo :)",
+      color: "green",
     });
   }
 
@@ -177,8 +197,7 @@ contentGame.addEventListener("click", getPosition);
 document.addEventListener("DOMContentLoaded", (e) => {
   iziToast.show({
     title: "Holaa.!",
-    message:
-      "Bienvenido al clasíco juego del gato :)",
+    message: "Bienvenido al clasíco juego del gato :)",
     color: "blue",
   });
 
