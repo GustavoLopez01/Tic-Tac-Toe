@@ -103,6 +103,20 @@ const validateFields = () => {
       ) {
         showAlertWinner();
         return true;
+      } else if (
+        gameArr[1] === player &&
+        gameArr[4] === player &&
+        gameArr[7] === player
+      ) {
+        showAlertWinner();
+        return true;
+      } else if (
+        gameArr[6] === player &&
+        gameArr[7] === player &&
+        gameArr[8] === player
+      ) {
+        showAlertWinner();
+        return true;
       }
 
       break;
@@ -140,6 +154,20 @@ const validateFields = () => {
         gameArr[2] === player &&
         gameArr[4] === player &&
         gameArr[6] === player
+      ) {
+        showAlertWinner();
+        return true;
+      } else if (
+        gameArr[1] === player &&
+        gameArr[4] === player &&
+        gameArr[7] === player
+      ) {
+        showAlertWinner();
+        return true;
+      } else if (
+        gameArr[6] === player &&
+        gameArr[7] === player &&
+        gameArr[8] === player
       ) {
         showAlertWinner();
         return true;
